@@ -1,0 +1,103 @@
+create table users
+(
+    user_id  int unsigned auto_increment
+        primary key,
+    name     varchar(255) not null,
+    email    varchar(255) not null,
+    password varchar(255) not null,
+    pfp_path varchar(500) null,
+    bio      varchar(500) null,
+    constraint email
+        unique (email),
+    constraint name
+        unique (name)
+);
+
+create table followers
+(
+    follow_id   int auto_increment
+        primary key,
+    user_id     int unsigned not null,
+    follower_id int unsigned not null,
+    followed_at timestamp    null,
+    constraint unique_like
+        unique (user_id, follower_id),
+    constraint followers_ibfk_1
+        foreign key (user_id) references users (user_id),
+    constraint followers_ibfk_2
+        foreign key (follower_id) references users (user_id)
+);
+
+create index follower_id
+    on followers (follower_id);
+
+create table post
+(
+    post_id      int unsigned auto_increment
+        primary key,
+    description  varchar(300) not null,
+    user_id      int unsigned not null,
+    date         datetime     not null,
+    name         varchar(100) not null,
+    post_path    varchar(500) null,
+    top_color    varchar(33)  null,
+    bottom_color varchar(25)  null,
+    Style        varchar(35)  null,
+    gender       tinyint      null,
+    likes        int          not null,
+    body_shape   varchar(20)  not null,
+    constraint post_ibfk_1
+        foreign key (user_id) references users (user_id)
+);
+
+create table comments
+(
+    comments_id int auto_increment
+        primary key,
+    user_id     int unsigned not null,
+    post_id     int unsigned not null,
+    created_at  timestamp    null,
+    message     varchar(250) not null,
+    constraint unique_like
+        unique (user_id, post_id),
+    constraint comments_ibfk_1
+        foreign key (user_id) references users (user_id),
+    constraint comments_ibfk_2
+        foreign key (post_id) references post (post_id)
+);
+
+create table likes
+(
+    like_id    int auto_increment
+        primary key,
+    user_id    int unsigned not null,
+    post_id    int unsigned not null,
+    created_at timestamp    null,
+    constraint unique_like
+        unique (user_id, post_id),
+    constraint likes_ibfk_1
+        foreign key (user_id) references users (user_id),
+    constraint likes_ibfk_2
+        foreign key (post_id) references post (post_id)
+);
+
+create index post_id
+    on likes (post_id);
+
+create index user_id
+    on post (user_id);
+
+create table reports
+(
+    report_id  int auto_increment
+        primary key,
+    user_id    int unsigned not null,
+    post_id    int unsigned not null,
+    created_at timestamp    null,
+    constraint unique_like
+        unique (user_id, post_id),
+    constraint reports_ibfk_1
+        foreign key (user_id) references users (user_id),
+    constraint reports_ibfk_2
+        foreign key (post_id) references post (post_id)
+);

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+}
+.header {
+    position:fixed;
+    background-color: #9590A8;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200;
+}
+.Hpg {
+    width: 50px;
+    height: 50px;
+    overflow: visible;
+    margin-left: 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+.Pfs {
+    width: 50px;
+    height: 50px;
+    overflow: visible;
+    margin-right: 5px;
+}
+.Pfs > img {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    outline: 2px white solid;
+}
+.site {
+    display: flex;
+    flex-direction: column;
+}
+.sidepannel {
+    background-color: #8B575C;
+    height: 100vh;
+    width: 5vw;
+    align-self: flex-end;
+    position: fixed;
+    z-index: 0;
+}
+.homepage {
+    align-self: self-start;
+    padding-top: 60px;
+    height: 5000px;
+    width: 95vw;
+    text-align: center;
+    background-color: #F4F4F4;
+}
+.homepage > h1 {
+    font-size: 5vw;
+    font-family: inter;
+}
+p {
+    font-size: 20px;
+    font-family: inter;
+}
+input {
+    transition: 0.3s;
+    height: 2vh;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid lightgrey;
+    outline: none;
+    box-shadow: 0px 0px 20px -18px;
+}
+input:hover {
+   transform: scale(0.95); 
+   transition: 0.5s;
+}
+.box {
+    background-color: white;
+    height: 250px; 
+    margin-bottom: 50px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.mostliked {
+    background-color: white;
+    height: 250px;
+}
+h3,h2{
+    font-family: Inter;
+    color: #000000;
+}

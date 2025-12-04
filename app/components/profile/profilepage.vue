@@ -95,6 +95,11 @@ const reportpfof = async function () {
   } catch (e) {
   }
 }
+console.log(bio.value)
+
+if (bio == null) {
+    bio.value = "Nothing here....."
+}
 </script>
 <template>
       <div class="body">

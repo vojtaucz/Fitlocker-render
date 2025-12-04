@@ -11,7 +11,8 @@ export default defineEventHandler(async (event) => {
   const signtoken = jwt.sign(
         { 
             id: decoded.id, 
-            name: requestbody.name 
+            name: requestbody.name ,
+            pfp: decoded.pfp
         },JWT_SECRET,{ expiresIn: '1d' })
         setCookie(event, 'auth_token', signtoken, {
             httpOnly: true,   

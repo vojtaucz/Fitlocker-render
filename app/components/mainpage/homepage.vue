@@ -57,7 +57,7 @@ const { data: posts, error } = await useFetch("/api/postsformainpage", {
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: -6px; 
-  padding-left: 1rem;
+  padding-left: 0;
   padding-right: 1rem;
   z-index: 2;
   position: relative;
@@ -115,7 +115,7 @@ const { data: posts, error } = await useFetch("/api/postsformainpage", {
   padding: 0 35px;
   height: 100%;
   cursor: pointer;
-  font-family: inherit;
+  font-family: inter;
   color: #18181b;
   transition: 0.2s;
 }

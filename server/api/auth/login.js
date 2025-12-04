@@ -8,9 +8,8 @@ export default defineEventHandler(async(event) =>{
     const requestbody = await readBody(event);
     const connection = await connectiondtb()
     const JWT_SECRET = process.env.JWT_SECRET;
-    try {
+       try {
         const [resolut] = await connection.execute('SELECT * FROM users WHERE email = ?',[requestbody.email]);
-        await connection.end();
 
         if (resolut.length === 0) {
             throw createError({
@@ -27,10 +26,13 @@ export default defineEventHandler(async(event) =>{
                 message: 'Invalid email or password!'
             });
         }
+        const [pfp] = await connection.execute('SELECT pfp_path FROM users WHERE email = ?',[requestbody.email]);
+        await connection.end();
         const token = jwt.sign(
         { 
             id: resolut[0].user_id,
-            name: resolut[0].name 
+            name: resolut[0].name, 
+            pfp: pfp[0].pfp_path
         },JWT_SECRET,{ expiresIn: '1d' })
         setCookie(event, 'auth_token', token, {
             httpOnly: true,   
@@ -46,7 +48,7 @@ export default defineEventHandler(async(event) =>{
             token: token
         };
 
-    }
+     }
     catch (error) {
         await connection.end();
     if (error.statusCode) {

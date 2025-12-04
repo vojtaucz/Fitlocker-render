@@ -31,7 +31,7 @@ filesrc.value = resolut.src;
     width: 250px; 
     background-color: rgb(107, 107, 107);
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: 0.3s;
   }
   .post-container > img {

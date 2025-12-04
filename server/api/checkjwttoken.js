@@ -13,7 +13,8 @@ export default defineEventHandler(async (event) => {
     return { 
       loggedin: true, 
       name: decoded.name,
-      id: decoded.id
+      id: decoded.id,
+      pfp : decoded.pfp
     }
   } catch (error) {
     return { loggedin: false, user: null }

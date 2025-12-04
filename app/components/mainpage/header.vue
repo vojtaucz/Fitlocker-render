@@ -89,8 +89,8 @@ const handleMenuClick = (id) => {
   
   isMenuOpen.value = false
 }
-if (authdata.id) {
-    pfppath.value = await $fetch("/api/reqs/getpfp", {
+if (authdata.loggedin) {
+    pfppath.value = await $fetch("/api/getpfp", {
       method: "POST",
       body: {
         id: authdata.id

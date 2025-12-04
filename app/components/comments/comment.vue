@@ -34,7 +34,7 @@ const props = defineProps({
   }
   const name = ref()
   pfp.value = "/uploads/profilepics/default.png"
-  pfp.value = await $fetch("/api/reqs/getpfp",{
+  pfp.value = await $fetch("/api/getpfp",{
       method: "POST",
       body: {
         name: info.name[0].name,
@@ -61,8 +61,6 @@ const props = defineProps({
   }}
   const delcomment = async function () {
   if(!confirm("Opravdu odstranit příspěvek?")) return;
-  
-  try {
     $fetch("/api/reqs/deletecoment", {
       method: "POST",
       body: {
@@ -71,8 +69,6 @@ const props = defineProps({
     })
     await refreshNuxtData('post-comments')
     await refreshNuxtData('post-comments')
-  } catch (e) {
-  }
 }
 </script>
 

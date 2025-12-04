@@ -172,7 +172,7 @@ const { data: posts, error } = await useFetch("/api/postsformainpage", {
 }
 
 .grid-layout {
-  columns: 5; 
+  columns: 1; 
   column-gap: 1vw;
 }
 .grid-layout > * {
@@ -204,14 +204,14 @@ const { data: posts, error } = await useFetch("/api/postsformainpage", {
     padding: 0;
   }
 }
-@media (min-width: 2600px) {
+@media (min-width: 2200px) {
   .grid-layout {
   column-count: 6; 
   column-gap: 1vw;
   row-gap: 15px;
   }
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .logo {
     font-size: 3rem;
   }
@@ -235,6 +235,16 @@ const { data: posts, error } = await useFetch("/api/postsformainpage", {
   
   .action-btn {
     padding: 0 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .grid-layout {
+    column-count: 3;
+  }
+}
+@media (min-width: 1424px) {
+  .grid-layout {
+    column-count: 5;
   }
 }
 </style>

@@ -19,7 +19,7 @@ const mess = ref()
 pfp.value = "/uploads/profilepics/default.png"
 const authdata = await $fetch('/api/checkjwttoken')
   if (authdata.loggedin) {
-    pfp.value = await $fetch("/api/reqs/getpfp",{
+    pfp.value = await $fetch("/api/getpfp",{
       method: "POST",
       body: {
         id: authdata.id

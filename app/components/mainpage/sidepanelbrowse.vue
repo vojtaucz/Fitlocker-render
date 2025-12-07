@@ -147,7 +147,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter();
-const ignorebod = ref(false)
+const ignorebod = ref(true)
 
 const bodyShape = ref('inverted-triangle') 
 const bodyShapes = ['triangle', 'inverted-triangle', 'square', 'round', 'hourglass']
@@ -240,8 +240,8 @@ const search = () => {
   const queryParams = new URLSearchParams();
   
   if (colors.value.length) queryParams.append('colors', colors.value.join(','));
-  if (topColors.value.length) queryParams.append('top-colors', topColors.value.join(','));
-  if (bottomColors.value.length) queryParams.append('bottom-colors', bottomColors.value.join(','));
+  if (topColors.value.length) queryParams.append('topcolors', topColors.value.join(','));
+  if (bottomColors.value.length) queryParams.append('bottomcolors', bottomColors.value.join(','));
   if (styles.value.length) queryParams.append('style', styles.value.join(','));
   if (gender.value && gender.value != 'Unisex') queryParams.append('gender', gender.value);
   if (ignorebod.value != true) queryParams.append('bodyshape', bodyShape.value);

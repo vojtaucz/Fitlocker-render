@@ -41,13 +41,10 @@ export default defineEventHandler(async(event) =>{
             maxAge: 60 * 60 * 24,  
             path: '/'
         })
-  
-
         return {
             success: true,
             token: token
         };
-
      }
     catch (error) {
         await connection.end();

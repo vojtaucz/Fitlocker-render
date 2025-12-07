@@ -1,8 +1,5 @@
 <template>
   <div class="comment-c">
-    <div class="nap-c">
-      <img :src="pfp">
-    </div> 
     <input v-model="mess">
     <button @click="submit()">Submit</button>
   </div>
@@ -14,17 +11,13 @@ const props = defineProps({
 })
 const router = useRouter();
 const route = useRoute();
-const pfp = ref()
 const mess = ref()
-pfp.value = "/uploads/profilepics/default.png"
 
 const authdata = await $fetch('/api/checkjwttoken')
-if (authdata.loggedin) {
-  pfp.value = authdata.pfp
-}
 
   const submit = async() => {
     if (!mess.value) {return}
+    if (!(authdata.loggedin)) {router.push('/login')}
     const res = await $fetch("/api/reqs/addcomment", {
     method: "POST",
     body: {
@@ -48,29 +41,10 @@ if (authdata.loggedin) {
   align-items: center;
   justify-content: space-evenly;
 }
-.nap-c > img {
-  border-radius: 35px;
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-}
-.nap-c {
-  margin-left: 15px;
-  max-width: 75px;
-  display: flex;
-  justify-content:left;
-  flex-direction: column;
-  align-items: center;
-}
 .comment-c > p {
   font-size:  12px;
   padding: 0px 15px;
   text-align: justify;
-}
-.nap-c > p {
-  font-size:  10px;
-  padding: 0;
-  margin: 2px 0px 0px 0px;
 }
 .comment-c > svg {
   width: 30px;
@@ -82,5 +56,16 @@ if (authdata.loggedin) {
 }
 .comment-c > svg:active {
   transform: scale(0.75);
+}
+.comment-c > button {
+   background-color: black;
+            color: white;
+            padding: 6px;
+            border-radius: 12px;
+            border: none;
+            font-family: inter;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            width: 80px;
 }
 </style>

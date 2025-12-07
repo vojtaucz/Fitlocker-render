@@ -3,14 +3,14 @@
     <mainpage-header></mainpage-header>
     <div class="main">
       <div class="container-search">
-        <div v-if="posts && posts[0]" class="searchresolut">
+        <p v-if="!posts || !posts[0] || !posts[0][0]">There are no posts like this..</p>
+        <div v-else class="searchresolut">
         <posts-post 
           v-for="(post, index) in posts[0]" 
           :key="post.post_id" 
           :id="post.post_id"
         />
       </div>
-      <p v-else>There are no posts like this..</p>
       <mainpage-sidepanelbrowse/>
       </div>
     </div>
@@ -23,16 +23,20 @@ definePageMeta({
   key: route => route.fullPath
 })
 
+const topcolor = route.query.topcolors;
+const bottomcolor = route.query.bottomcolors;
 const colors = route.query.colors;
 const style = route.query.style;
-const bodyshape = route.query.bodyshape;
+const body_shape = route.query.bodyshape;
 const gender = route.query.gender;
 
 
 const params = {
+  topcolor,
+  bottomcolor,
   colors,
   style,
-  bodyshape,
+  body_shape,
   gender
 }
 

@@ -27,9 +27,7 @@ export default defineEventHandler(async (event) => {
       const decoded = jwt.verify(token, JWT_SECRET)
       user = decoded.id
     } catch(err) {
-
     } 
-    
     if (!file) {
       throw createError({
         statusCode: 400,

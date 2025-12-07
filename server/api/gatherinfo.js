@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     if (!requestbody.id) {
       const [data] = await connection.execute('SELECT * FROM users WHERE name=?',[requestbody.name]);
       const [followers] = await connection.execute('SELECT follower_id FROM followers WHERE user_id=?',[data[0].user_id]);
-    const likes = await connection.execute('SELECT likes FROM post WHERE user_id=?',[data[0].user_id]);
+      const likes = await connection.execute('SELECT likes FROM post WHERE user_id=?',[data[0].user_id]);
       let soucet = 0
       console.log(likes[0].length)
       for (let i = 0;i < likes[0].length; i++) {

@@ -8,7 +8,6 @@ export default defineEventHandler(async (event) => {
     const newname = formData.find(item => item.name === 'newname')?.data;
     const id = formData.find(item => item.name === 'id')?.data.toString();
     const bio = formData.find(item => item.name === 'bio').data;
-    console.log(bio.toString())
     if (newname != name && name) {
       const nameconnection = await connectiondtb();
       try {

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 export default defineEventHandler(async(event)=>{
-    if (event.path.startsWith('/api/logonly') ||event.path.startsWith('/api/reqs') ) {
+    if (event.path.startsWith('/api/reqs') ) {
     const token = getCookie(event, 'auth_token')
      if (!token) {
       throw createError({ 

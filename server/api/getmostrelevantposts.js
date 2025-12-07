@@ -14,14 +14,13 @@ export default defineEventHandler(async (event) => {
     style = query.style.split(',').map(c => c.trim());
   } 
   let Topcolors
-  if (query.top_color) {
-    Topcolors = query.top_color.split(',').map(c => c.trim());
+  if (query.topcolor) {
+    Topcolors = query.topcolor.split(',').map(c => c.trim());
   } 
    let Bottomcolors
-  if (query.bottom_color) {
-    Bottomcolors = query.bottom_color.split(',').map(c => c.trim());
+  if (query.bottomcolor) {
+    Bottomcolors = query.bottomcolor.split(',').map(c => c.trim());
   } 
-  console.log(colors)
   if (query.style) {
     conditions.push('Style IN (?)');
     params.push(style);
@@ -42,12 +41,12 @@ export default defineEventHandler(async (event) => {
     params.push(colors, colors);
   }
   
-  if (query.top_color) {
+  if (query.topcolor) {
     conditions.push('top_color IN (?)');
     params.push(Topcolors);
   }
   
-  if (query.bottom_color) {
+  if (query.bottomcolor) {
     conditions.push('bottom_color IN (?)');
     params.push(Bottomcolors);
   }
@@ -61,10 +60,7 @@ export default defineEventHandler(async (event) => {
     ${rawsql}
     ORDER BY likes DESC, date DESC
   `;
-  console.log(sql)
-  console.log(params)
   const posts = await connection.query(sql, params) 
-  console.log (posts)
   return posts;
 });
 

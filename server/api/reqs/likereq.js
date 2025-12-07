@@ -16,7 +16,8 @@ export default defineEventHandler(async (event) => {
     }else {
       const pluslikes = await connection.execute('UPDATE post SET likes = ? WHERE post_id = ?',
       [likes[0].length - 1,requestbody.post_id])
-      const resolut = await connection.execute('DELETE FROM likes WHERE user_id = ? AND post_id = ?', [ decoded.id,requestbody.post_id])
+      const resolut = await connection.execute('DELETE FROM likes WHERE user_id = ? AND post_id = ?', 
+      [ decoded.id,requestbody.post_id])
     }
       connection.end()
       try {
